@@ -23,17 +23,47 @@
                 <input type="number" name="logic" required>
             </div>
             <div class="question">
-                <h2>4. Correct this Sentence: He go to school every day.</h2>
-                <input type="text" name="grammar" required>
+                <h2>4. Do you prefer analyzing data or creating art?</h2>
+                <input type="radio" name="creativity" value="left" required> Analyzing Data<br>
+                <input type="radio" name="creativity" value="right" required> Creating Art<br>
             </div>
             <div class="question">
-                <h2>5. Visual Puzzle: Arrange the shapes to form a square.</h2>
-                <!-- Example interactive task placeholder -->
-                <input type="text" name="visual" required>
+                <h2>5. Do you make decisions based on logic or emotions?</h2>
+                <input type="radio" name="decision" value="left" required> Logic<br>
+                <input type="radio" name="decision" value="right" required> Emotions<br>
+            </div>
+            <div class="question">
+                <h2>6. Do you prefer a well-structured plan or going with the flow?</h2>
+                <input type="radio" name="structure" value="left" required> Well-Structured Plan<br>
+                <input type="radio" name="structure" value="right" required> Going with the Flow<br>
+            </div>
+            <div class="question">
+                <h2>7. Do you focus more on details or the overall concept?</h2>
+                <input type="radio" name="focus" value="left" required> Details<br>
+                <input type="radio" name="focus" value="right" required> Overall Concept<br>
+            </div>
+            <div class="question">
+                <h2>8. Do you express yourself better with words or images?</h2>
+                <input type="radio" name="expression" value="left" required> Words<br>
+                <input type="radio" name="expression" value="right" required> Images<br>
             </div>
             <button type="submit">Submit</button>
         </form>
     </div>
-    <script src="script.js"></script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbygJ6jfpMGg4EtiFew0kzqaQAnM1Qe8XXy0ytwNbYUDR3XcEw1OO0bCUZXF5sL7zzeEWw/exec'; // Replace with your Google Apps Script Web App URL
+
+        const form = document.getElementById('brainGameForm');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    alert('Welcome to SAHS!');
+                    console.log('Success!', response);
+                })
+                .catch(error => console.error('Error!', error.message));
+        });
+    </script>
 </body>
 </html>
